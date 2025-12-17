@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="circular_motion_ee_node" pkg="kinematics_basic_concepts" type="circular_motion_ee.py" respawn="false"
+        output="screen" args=""/>
+
+</launch>

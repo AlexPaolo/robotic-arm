@@ -1,0 +1,12 @@
+" ============================================================================
+" Netrw Directory Listing                                        (netrw v165)
+"   /home/simulations/public_sim_ws/src/all/solutions_arm_kinematics_basics/kinematics_basic_concepts/src/kinematics_basic_concept
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
+" ==============================================================================
+../
+./
+ik_planar_arm.cpython-38.pyc
+move.cpython-38.pyc
+rviz_marker.cpython-38.pyc

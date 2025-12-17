@@ -1,0 +1,6 @@
+<launch>
+
+  <include file="$(find planar_3dof_gazebo)/launch/start_world.launch"/>
+  <include file="$(find daruma_description)/launch/rviz_start.launch"/>
+
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+
+  <include file="$(find kinematics_basic_concepts)/launch/circular_motion_ee.launch"/>
+  <include file="$(find kinematics_basic_concepts)/launch/planar_end_effector_mover.launch"/>
+
+</launch>
