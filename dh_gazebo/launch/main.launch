@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find dh_gazebo)/launch/start_world.launch"/>
+  <include file="$(find dh_gazebo)/launch/spawn.launch"/>
+  <include file="$(find dh_control)/launch/dh_sim_control.launch"/>
+
+</launch>

@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find antropomorphic_arm_gazebo)/launch/start_world.launch"/>
+  <include file="$(find antropomorphic_arm_gazebo)/launch/spawn.launch"/>
+  <include file="$(find antropomorphic_arm_control)/launch/antropomorphic_arm_sim_control.launch"/>
+
+</launch>

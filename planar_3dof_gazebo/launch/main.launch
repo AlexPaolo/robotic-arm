@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find planar_3dof_gazebo)/launch/start_world.launch"/>
+  <include file="$(find planar_3dof_gazebo)/launch/spawn.launch"/>
+  <include file="$(find planar_3dof_control)/launch/planar_3dof_control.launch"/>
+
+</launch>
