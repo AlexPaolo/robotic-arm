@@ -26,52 +26,47 @@ class EE_Client(object):
         self.unitary_angle += delta
         if self.unitary_angle >= 2*pi:
             self.unitary_angle = 0.0
-        if self.unitary_angle >= 2*pi:
-                self.unitary_angle = 0.0
 
-                if x >= 0 and y >= 0:
-                    quadrant = 1
-                elif x < 0 and y >= 0:
-                    quadrant = 2
-                elif x < 0 and y < 0:
-                    quadrant = 3
-                elif x >= 0 and y < 0:
-                    quadrant = 4
-                else:
-                    assert False, "This is not possible = "+str(x)+","+str(y)
+        if x >= 0 and y >= 0:
+            quadrant = 1
+        elif x < 0 and y >= 0:
+            quadrant = 2
+        elif x < 0 and y < 0:
+            quadrant = 3
+        elif x >= 0 and y < 0:
+            quadrant = 4
+        else:
+            assert False, "This is not possible = "+str(x)+","+str(y)
 
-
+        return x, y, quadrant
 
 
-                return x, y, quadrant
+    def start_loop(self):
 
+        while not rospy.is_shutdown():
 
-        def start_loop(self):
+            x_elipse, y_elipse, quadrant = self.generate_elipse_points()
 
-            while not rospy.is_shutdown():
+            ee_msg = EndEffector()
 
-                x_elipse, y_elipse, quadrant = self.generate_elipse_points()
+            ee_pose = Vector3()
+            ee_pose.x = x_elipse
+            ee_pose.y = y_elipse
+            ee_pose.z = self.unitary_angle
 
-                ee_msg = EndEffector()            
+            # We decide elboy policy based on the quadrant we are in
+            if quadrant == 1 or quadrant == 4:
+                elbow_policy = "down"
+            else:
+                elbow_policy = "up"
 
-                ee_pose = Vector3()
-                ee_pose.x = x_elipse
-                ee_pose.y = y_elipse
-                ee_pose.z = self.unitary_angle
+            ee_msg.ee_xy_theta = ee_pose
+            ee_msg.elbow_policy.data = elbow_policy
 
-                # We decide elboy policy based on the quadrant we are in
-                if quadrant == 1 or quadrant == 4:
-                    elbow_policy = "down"
-                else:
-                    elbow_policy = "up"
+            print("Elipse Point="+str(ee_pose)+", elbow="+str(elbow_policy))
+            self.pub_end_effector_commads.publish(ee_msg)
 
-                ee_msg.ee_xy_theta = ee_pose
-                ee_msg.elbow_policy.data = elbow_policy
-
-                print("Elipse Point="+str(ee_pose)+", elbow="+str(elbow_policy))
-                self.pub_end_effector_commads.publish(ee_msg)
-
-                self._rate.sleep()
+            self._rate.sleep()                            
 
 def main():
     rospy.init_node('circular_motion_ee')
@@ -87,6 +82,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 

@@ -1,6 +1,0 @@
-<launch>
-
-  <node name="antropomorphic_arm_tf_listener" pkg="antropomorphic_arm_control" type="tf_listener.py" respawn="false"
-        output="screen" args=""/>
-
-</launch>
